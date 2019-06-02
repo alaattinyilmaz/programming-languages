@@ -1,0 +1,5 @@
+<course code="CS305" name='Programming Languages' type="Lecture">
+<class section="0" instructor='Husnu Yenigun' crn=20258 capacity=60>
+<meeting day=R start=08:40 end=10:30/>
+</class>
+</course>

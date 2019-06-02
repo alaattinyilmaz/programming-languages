@@ -1,0 +1,41 @@
+%{
+#include <string.h>
+int pos = 1; 
+char temp[50];
+int i = 0;
+%}
+%%
+\< printf("%d tOPEN\n", pos);
+\> printf("%d tCLOSE\n", pos); pos++;
+\<\/ printf("%d tEND\n", pos);
+\/\> printf("%d tSELF\n", pos); pos++;
+[1-9][0-9]* printf("%d tNUM (%s)\n", pos, yytext);
+\"([^\"]*)\" for(i=0; yytext[i+2]!='\0'; i++) { temp[i] = yytext[i+1]; } temp[i]='\0'; printf("%d tSTRING (%s)\n", pos, temp);
+\'([^\']*)\' for(i=0; yytext[i+2]!='\0'; i++) { temp[i] = yytext[i+1]; } temp[i]='\0'; printf("%d tSTRING (%s)\n", pos, temp);
+([0-1][0-9]|[2][0-3]):([0-5][0-9]) printf("%d tTIME (%s)\n", pos, yytext);
+course printf("%d tCOURSE\n", pos);
+class printf("%d tCLASS\n", pos);
+meeting printf("%d tMEETING\n", pos);
+constraint printf("%d tCONSTRAINT\n", pos);
+item printf("%d tITEM\n", pos);
+name= printf("%d tNAME\n", pos);
+code= printf("%d tCODE\n", pos);
+instructor= printf("%d tINSTRUCTOR\n", pos);
+type= printf("%d tTYPE\n", pos);
+crn= printf("%d tCRN\n", pos);
+section= printf("%d tSECTION\n", pos);
+capacity= printf("%d tCAPACITY\n", pos);
+start= printf("%d tSTART\n", pos);
+end= printf("%d tEND_A\n", pos);
+day= printf("%d tDAY\n", pos);
+M printf("%d tMON\n", pos);
+T printf("%d tTUE\n", pos);
+W printf("%d tWED\n", pos);
+R printf("%d tTHU\n", pos);
+F printf("%d tFRI\n", pos);
+" "
+\n
+%%
+main(){
+	yylex();
+}

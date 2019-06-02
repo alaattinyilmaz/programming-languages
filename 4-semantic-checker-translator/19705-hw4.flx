@@ -1,0 +1,46 @@
+%{
+#include <stdio.h>
+#include <string.h>
+#include "19705-hw4.tab.h"
+int noOfLine = 1;
+int lineOfCourse = -1;
+int lineOfClass = -1;
+int lineOfMeeting = -1;
+int courseCount = 0;
+%}
+
+DIGIT    [0-9]
+%%
+\n noOfLine++;
+[/][>] yylval.str = strdup(yytext); return tSELF;
+[<] yylval.str = strdup(yytext); return tOPEN;
+[<][/] yylval.str = strdup(yytext); return tEND;
+course lineOfCourse = noOfLine; yylval.str = strdup(yytext); return tCOURSE;
+meeting lineOfMeeting = noOfLine;  yylval.str = strdup(yytext); return tMEETING;
+item yylval.str = strdup(yytext); return tITEM;
+code= yylval.str = strdup(yytext); return tCODE;
+type= yylval.str = strdup(yytext); return tTYPE;
+section= yylval.str = strdup(yytext); return tSECTION;
+start= yylval.str = strdup(yytext); return tSTART;
+day= yylval.str = strdup(yytext); return tDAY;
+M yylval.str = strdup(yytext); return tMON;
+T yylval.str = strdup(yytext); return tTUE;
+R yylval.str = strdup(yytext); return tTHU;
+[>] yylval.str = strdup(yytext); return tCLOSE;
+class lineOfClass = noOfLine; yylval.str = strdup(yytext); return tCLASS;
+constraint yylval.str = strdup(yytext); return tCONSTRAINT;
+name= yylval.str = strdup(yytext); return tNAME;
+instructor= yylval.str = strdup(yytext); return tINSTRUCTOR;
+crn= yylval.str = strdup(yytext); return tCRN;
+capacity= yylval.str = strdup(yytext); return tCAPACITY;
+end= yylval.str = strdup(yytext); return tEND_A;
+'[^']*'	yylval.str = strdup(yytext); return tSTRING;
+["][^"]*["] yylval.str = strdup(yytext); return tSTRING;
+{DIGIT}+ yylval.str = strdup(yytext); return tNUM;
+W yylval.str = strdup(yytext); return tWED;
+F yylval.str = strdup(yytext); return tFRI;
+{DIGIT}{2}:{DIGIT}{2} yylval.str = strdup(yytext); return tTIME;
+\t 
+[ ] 
+
+%%

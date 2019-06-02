@@ -1,0 +1,15 @@
+<course>
+<class section="0" instructor='Husnu Yenigun' crn=20258 capacity=60>
+<meeting day=R start=08:40 end=10:30/>
+<meeting start=08:40 end=09:30 day=F/>
+</class>
+</course>
+<course>
+<class section="0" instructor='Husnu Yenigun' crn=20257>
+<meeting/>
+</class>
+</course>
+<constraint>
+<item/>
+<item/>
+</constraint>

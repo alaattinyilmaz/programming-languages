@@ -1,0 +1,44 @@
+%{
+#include <stdio.h>
+#include <string.h>
+#include "19705-hw3.tab.h"
+int noOfLine = 1;
+%}
+
+
+DIGIT    [0-9]
+%%
+\n noOfLine++;
+[/][>] return tSELF;
+[<] return tOPEN;
+[<][/] return tEND;
+course return tCOURSE;
+meeting return tMEETING;
+item return tITEM;
+code= return tCODE;
+type= return tTYPE;
+section= return tSECTION;
+start= return tSTART;
+day= return tDAY;
+M return tMON;
+T return tTUE;
+R return tTHU;
+[>] return tCLOSE;
+class return tCLASS;
+constraint return tCONSTRAINT;
+name= return tNAME;
+instructor= return tINSTRUCTOR;
+crn= return tCRN;
+capacity= return tCAPACITY;
+end= return tEND_A;
+'[^']*'	return tSTRING;
+["][^"]*["] return tSTRING;
+{DIGIT}+ return tNUM;
+W return  tWED;
+F return  tFRI;
+{DIGIT}{2}:{DIGIT}{2}  return tTIME;
+\t 
+[ ] 
+. { return yytext[0];}
+%%
+

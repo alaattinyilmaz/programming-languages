@@ -1,0 +1,5 @@
+<course code="CS301R" name="Algorithms-Recitation" type="Recitation">
+<class section="1" instructor='thisfdas' crn=55555>
+<meeting start=12:40 day=M end=18:30/>
+</class>
+</course>
